@@ -1,6 +1,7 @@
 // Header
 .evo_container__header {
 	margin-bottom: 20px;
+	text-align: center;
 }
 .evo_container__page_top {
 	margin-top: 20px;
@@ -8,8 +9,14 @@
 		text-align: right;
 	}
 }
-.nav.nav-tabs {
-	margin-top: 0;
+.evo_container__menu {
+	margin-top: 20px;
+}
+
+// Body
+#skin_wrapper {
+	font: 20px Georgia, serif;
+	line-height: 32px;
 }
 
 // Login widget form
@@ -131,8 +138,8 @@ form.search .search_options {
 }
 div.compact_search_form {
 	input.search_field {
-		width: 100%;
-		margin: 0;
+		width: 350px;
+		margin: 0 10px;
 	}
 }
 div.extended_search_form {
@@ -336,4 +343,25 @@ footer.row {
 // Overrule predefined background-color style
 .avatar_main_frame {
 	background-color: transparent;
+}
+
+// Post separators
+.post_date, .blog_index, .page_separator, #sidebar h2 {
+	clear: both;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 65%;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	top: -16px;
+	span {
+		background: #FFF;
+		padding: 0 8px;
+		position: relative;
+		top: 16px;
+	}
+}
+
+.post_date span {
+	text-transform: uppercase;
 }

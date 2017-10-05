@@ -15,7 +15,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  *
  * ATTENTION: if you make a new skin you have to change the class name below accordingly
  */
-class bootstrap_blog_Skin extends Skin
+class clean_bootstrap_Skin extends Skin
 {
 	/**
 	 * Skin version
@@ -36,7 +36,7 @@ class bootstrap_blog_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Bootstrap Blog';
+		return 'Clean Bootstrap';
 	}
 
 
@@ -117,7 +117,7 @@ class bootstrap_blog_Skin extends Skin
 					'layout' => array(
 						'label' => T_('Layout'),
 						'note' => T_('Select skin layout.'),
-						'defaultvalue' => 'right_sidebar',
+						'defaultvalue' => 'single_column_narrow',
 						'options' => array(
 								'single_column'              => T_('Single Column Large'),
 								'single_column_normal'       => T_('Single Column'),
@@ -147,7 +147,7 @@ class bootstrap_blog_Skin extends Skin
 							),
 							'_size' => array(
 								'label' => T_('Size'),
-								'defaultvalue' => 'default',
+								'defaultvalue' => 'large',
 								'options'      => array(
 									'default'        => T_('Default (14px)'),
 									'standard'       => T_('Standard (16px)'),
