@@ -1,7 +1,76 @@
+#skin_wrapper {
+	font-family: Georgia, serif;
+	font-size: 20px;
+}
+
 // Header
+
+.evo_container__main_content
+{
+	line-height: 32px;
+	/*
+	a {
+		color: #111;
+		text-decoration: none;
+		&:hover {
+			color: #c00;
+			text-decoration: underline;
+		}
+	}
+	*/
+	ul.pagination {
+		margin: 22px 0 4px 0;
+		font-size: 78%;
+
+		a {
+			margin: 2px;
+			border-radius: 4px;
+		}
+
+		li {
+			a {
+				color: #111 !important;
+				background-color: #ddd;
+			}
+			&:not(.active) {
+				color: #111 !important;
+				background-color: #ddd;
+			}
+			&.active {
+				a {
+					background-color: #000 !important;
+					color: #fff !important;
+				}
+			}
+		}
+	}
+}
+
+.evo_content_block {
+	a {
+		color: #111;
+		text-decoration: none;
+		&:hover {
+			color: #c00;
+			text-decoration: underline;
+		}
+	}
+}
+
 .evo_container__header {
-	margin-bottom: 20px;
+	margin-bottom: 36px;
 	text-align: center;
+	h1 {
+		&, a, a:hover, a:visited {
+			text-decoration: none;
+			color: #000;
+			font-family: HelveticaNeue, Helvetica, Arial;
+			font-size: 60px;
+			font-weight: bold;
+			line-height: 1.2;
+			margin: 27px 0 25px 0;
+		}
+	}
 }
 .evo_container__page_top {
 	margin-top: 20px;
@@ -11,13 +80,36 @@
 }
 .evo_container__menu {
 	margin-top: 20px;
+
+	&.nav-tabs {
+		border: 0;
+		li{
+			a {
+				border-radius: 3px;
+				border: none;
+				color: #111;
+				text-decoration: none;
+				border-radius: 3px;
+				font-size: 0.524em;
+				line-height: 3.182em;
+				display: block;
+				padding: 0 8px;
+				margin: 0 2px;
+				background: #DDD;
+				text-transform: uppercase;
+				&:hover {
+					color: #c00;
+					text-decoration: underline;
+				}
+				&.selected {
+					background: #DDD !important;
+					border: none;
+				}
+			}
+		}
+	}
 }
 
-// Body
-#skin_wrapper {
-	font: 20px Georgia, serif;
-	line-height: 32px;
-}
 
 // Login widget form
 .widget_core_user_login {
@@ -319,19 +411,25 @@ div.action_messages, div.log_container {
 
 // Positions on the action buttons near page titles
 .evo_post_title {
-	display: table;
-	h1 {
-		margin-bottom: 0;
+	//display: table;
+	h1, h2, h3 {
+		font-style: italic;
+		line-height: 1.429em;
+		margin: 10px 0 0 0;
+		text-align: center;
 	}
-	h2 {
-		display: table-cell;
-		margin: 0;
-		padding: 20px 0 0;
+	h1 {
+		font-size: 2em;
+		margin: 25px 0 0 0;
+	}
+	.author {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 65%;
+		margin: 4px 0 10px 0;
 	}
 	.btn-group {
-		display: table-cell;
-		padding: 20px 0 10px 30px;
-		vertical-align: middle;
+		float: right;
 	}
 }
 
@@ -343,6 +441,54 @@ footer.row {
 // Overrule predefined background-color style
 .avatar_main_frame {
 	background-color: transparent;
+}
+
+/* Search form */
+div.widget_core_coll_search_form {
+	text-align: center;
+}
+form.search {
+	width: 80%;
+	margin: 20px auto 0 auto;
+}
+form.search .search_submit {
+	font: 0.63em Georgia,serif;
+	height: 2.9em;
+	line-height: 2.9em;
+	text-transform: uppercase;
+	margin: 0 0 0 9px;
+	padding: 0;
+	width: 22%;
+	border: 1px solid #C0C0C0;
+	color: #444444;
+	text-align: center;
+	text-align: center;
+	background: #f9f9f9;
+	background: linear-gradient(top, #f9f9f9 0%, #dbdbdb 100%);
+	text-shadow: 0 1px 0 white;
+	box-shadow: none;
+	border-radius: 2px;
+	clear: left;
+}
+form.search .search_submit:hover {
+	background: #fafafa;
+	background: linear-gradient(top, #fafafa 0%, #eaeaea 100%);
+	cursor: pointer;
+}
+form.search div.compact_search_form input.search_field,
+form.search div.extended_search_form input.search_field {
+	height: 2.1em;
+	line-height: 1.2em;
+	font-size: 0.84em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 10px;
+	border: 1px solid #D8D8D8;
+	background-color: #FFF;
+	border-radius: 2px;
+	box-shadow: inset -1px 1px 4px #eee;
+	box-sizing: content-box
 }
 
 // Post separators
@@ -361,7 +507,47 @@ footer.row {
 		top: 16px;
 	}
 }
-
 .post_date span {
 	text-transform: uppercase;
+}
+.post_date, .blog_index, .page_separator, #sidebar h2 {
+	& > span {
+		background: #FFF;
+		padding: 0 8px;
+		position: relative;
+		top: 16px;
+	}
+}
+.blog_index {
+	margin-top: 40px;
+}
+
+// Intro post
+.evo_intro_post {
+	border: none;
+	padding: 0;
+	background-color: #fff;
+	box-shadow: none;
+}
+
+.evo_post__full {
+	p {
+		margin: 20px 0;
+	}
+}
+
+nav .pager {
+	.next>a, .previous>a {
+		border-radius: 3px;
+		background-color: #111;
+		color: #fff;
+		font-size: 13px;
+		padding: 0 10px;
+	}
+}
+
+// Footer
+footer {
+	font-size: 0.667em;
+	line-height: 1.6em;
 }

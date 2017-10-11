@@ -75,22 +75,44 @@ if( ! $Item->is_intro() /* && $Skin->get_setting( 'display_post_date' ) */ )
 				$title_after = $params['item_title_after'];
 			}
 
+			if( $Item->is_intro() || $disp == 'posts' )
+			{
+				// EDIT LINK:
+				$Item->edit_link( array(
+							'before' => '<div class="floatright">',
+							'after'  => '</div>',
+							//'text'   => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+							'text'   => '#icon#',
+							//'class'  => button_class( 'text' ),
+						) );
+			}
+
 			// POST TITLE:
 			$Item->title( array(
-					'before'    => $title_before,
-					'after'     => $title_after,
-					'link_type' => '#'
-				) );
+				'before'    => $title_before,
+				'after'     => $title_after,
+				'link_type' => '#'
+			) );
 
-			// EDIT LINK:
-			if( $Item->is_intro() )
-			{ // Display edit link only for intro posts, because for all other posts the link is displayed on the info line.
+			if( ! $Item->is_intro() && $disp == 'single' )
+			{
+				echo '<div class="author">';
+				echo '<span>'.T_('by');
+				$Item->author( array(
+					'before'    => ' ',
+					'after'     => '',
+					'link_text' => 'preferredname',
+				) );
+				echo '</span> &nbsp;';
+				// EDIT LINK:
 				$Item->edit_link( array(
-							'before' => '<div class="'.button_class( 'group' ).'">',
-							'after'  => '</div>',
-							'text'   => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
-							'class'  => button_class( 'text' ),
-						) );
+					'before' => '',
+					'after'  => '',
+					//'text'   => $Item->is_intro() ? get_icon( 'edit' ).' '.T_('Edit Intro') : '#',
+					'text'   => '#icon#',
+					//'class'  => button_class( 'text' ),
+				) );
+				echo '</div>';
 			}
 
 			echo $params['item_title_line_after'];
@@ -110,11 +132,12 @@ if( ! $Item->is_intro() /* && $Skin->get_setting( 'display_post_date' ) */ )
 				) );
 		}
 
+		/*
 		if( $disp != 'page' )
 		{
 			// ------------------------- "Item Single - Header" CONTAINER EMBEDDED HERE --------------------------
 			// Display container contents:
-			skin_container( /* TRANS: Widget container name */ NT_('Item Single Header'), array(
+			skin_container(  NT_('Item Single Header'), array(
 				'widget_context' => 'item',	// Signal that we are displaying within an Item
 				// The following (optional) params will be used as defaults for widgets included in this container:
 				// This will enclose each widget in a block:
@@ -128,6 +151,7 @@ if( ! $Item->is_intro() /* && $Skin->get_setting( 'display_post_date' ) */ )
 			) );
 			// ----------------------------- END OF "Item Single - Header" CONTAINER -----------------------------
 		}
+		*/
 	?>
 	</div>
 	<?php
@@ -226,6 +250,19 @@ if( ! $Item->is_intro() /* && $Skin->get_setting( 'display_post_date' ) */ )
 		// -------------------------- END OF POST CONTENT -------------------------
 	// this will end a </section>
 	}
+	?>
+
+	<?php
+		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+		item_prevnext_links( array(
+				'block_start' => '<nav><ul class="pager">',
+					'prev_start'  => '<li class="previous">',
+					'prev_end'    => '</li>',
+					'next_start'  => '<li class="next">',
+					'next_end'    => '</li>',
+				'block_end'   => '</ul></nav>',
+			) );
+		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 	?>
 
 	<footer>

@@ -141,7 +141,7 @@ class clean_bootstrap_Skin extends Skin
 						'type'  => 'input_group',
 						'inputs' => array(
 							'_family' => array(
-								'defaultvalue' => 'system_helveticaneue',
+								'defaultvalue' => 'system_georgia',
 								'options'      => $this->get_font_definitions(),
 								'type'         => 'select'
 							),
@@ -533,7 +533,7 @@ class clean_bootstrap_Skin extends Skin
 		}
 
 		// Font family customization
-		$custom_css .= $this->apply_selected_font( '#skin_wrapper', 'font_family', NULL, 'font_weight' );
+		$custom_css .= $this->apply_selected_font( '#skin_wrapper', 'font_family', NULL, 'font_weight', 'font' );
 
 		if( ! empty( $custom_css ) )
 		{	// Function for custom_css:

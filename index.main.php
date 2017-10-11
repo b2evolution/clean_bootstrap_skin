@@ -38,7 +38,7 @@ siteskin_include( '_site_body_header.inc.php' );
 ?>
 
 
-<div class="container-fluid">
+<div class="evo_container__main_content container-fluid">
 
 
 <header>
@@ -103,21 +103,6 @@ siteskin_include( '_site_body_header.inc.php' );
 							'block_title_end'   => '</h1>',
 						) );
 					// ----------------------------- END OF "Header" CONTAINER -----------------------------
-
-					// Widget 'Search form':
-					skin_widget( array(
-							// CODE for the widget:
-							'widget' => 'coll_search_form',
-							// Optional display params
-							'block_start'         => '<div class="$wi_class$">',
-							'block_end'           => '</div><div class="clear"></div>',
-							'block_title_start'   => '<h1>',
-							'block_title_end'     => '</h1>',
-							'block_display_title' => false,
-							'block_start'         => '<div class="$wi_class$ menu_top_widget_block">',
-							'block_end'           => '</div>',
-							'button'              => T_('Search')
-						) );
 				?>
 				</div>
 			</div><!-- .col -->
@@ -126,10 +111,36 @@ siteskin_include( '_site_body_header.inc.php' );
 </header>
 
 <div class="container">
+
+
 	<div class="row">
-
 		<div class="<?php echo $Skin->get_column_class(); ?>">
-
+			<?php
+			if( ! in_array( $disp, array( 'single', 'page' ) ) )
+			{
+			?>
+			<div id="search_form" class="text-center">
+				<?php
+				// Widget 'Search form':
+					skin_widget( array(
+						// CODE for the widget:
+						'widget' => 'coll_search_form',
+						// Optional display params
+						'block_start'         => '<div class="$wi_class$">',
+						'block_end'           => '</div><div class="clear"></div>',
+						'block_title_start'   => '<h1>',
+						'block_title_end'     => '</h1>',
+						'block_display_title' => false,
+						'block_start'         => '<div class="$wi_class$ menu_top_widget_block">',
+						'block_end'           => '</div>',
+						'button'              => T_('Search')
+					) );
+				?>
+			</div>
+			<div class="blog_index"></div>
+			<?php
+			}
+			?>
 			<main><!-- This is were a link like "Jump to main content" would land -->
 
 			<!-- ================================= START OF MAIN AREA ================================== -->
@@ -144,19 +155,6 @@ siteskin_include( '_site_body_header.inc.php' );
 					) );
 				// --------------------------------- END OF MESSAGES ---------------------------------
 			}
-			?>
-
-			<?php
-				// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
-				item_prevnext_links( array(
-						'block_start' => '<nav><ul class="pager">',
-							'prev_start'  => '<li class="previous">',
-							'prev_end'    => '</li>',
-							'next_start'  => '<li class="next">',
-							'next_end'    => '</li>',
-						'block_end'   => '</ul></nav>',
-					) );
-				// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 			?>
 
 			<?php
@@ -201,7 +199,7 @@ siteskin_include( '_site_body_header.inc.php' );
 						'feature_block' => true,
 						'content_mode'  => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
 						'intro_mode'    => 'normal',	// Intro posts will be displayed in normal mode
-						'item_class'    => ($Item->is_intro() ? 'well evo_intro_post' : 'well evo_featured_post').( empty( $intro_item_style ) ? '' : ' evo_hasbgimg' ),
+						'item_class'    => ($Item->is_intro() ? 'evo_intro_post' : 'evo_featured_post').( empty( $intro_item_style ) ? '' : ' evo_hasbgimg' ),
 						'item_style'    => $intro_item_style,
 						'Item'          => $Item,
 					) );
@@ -378,6 +376,7 @@ siteskin_include( '_site_body_header.inc.php' );
 
 		<!-- =================================== START OF FOOTER =================================== -->
 			<div class="col-md-12">
+				<div class="blog_index"></div>
 
 			<?php // Note: clearfix is because of Bootstraps' .cols ?>
 			<div class="evo_container evo_container__footer clearfix">
